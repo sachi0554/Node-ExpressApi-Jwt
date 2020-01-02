@@ -4,7 +4,7 @@ const User = mongoose.model('User');
 
 
 module.exports = (req, res, next)=>{
-    const {authorization } = req.haaders;
+    const {authorization } = req.headers;
     if(!authorization){
         return res.status(401).send({error:"bad request"});
     }
@@ -15,8 +15,8 @@ module.exports = (req, res, next)=>{
            res.status(401).send({error:"not authorized"})
        }
 
-       const { UserId}= payload;
-       const user = await User.findById(UserId);
+       const { userId}= payload;
+       const user = await User.findById(userId);
        req.user= user;
        next();
 

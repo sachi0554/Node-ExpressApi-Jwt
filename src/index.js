@@ -1,14 +1,17 @@
 require('./models/User');
-const express = require('express')
+require('./models/Track');
+const express = require('express');
 const mongoose = require('mongoose');
-const authRoutes = require('./routes/authRoutes')
-const requireAuth = require('./middleware/requireAuth')
+const authRoutes = require('./routes/authRoutes');
+const trackRoute = require('./routes/trackRoute');
+const requireAuth = require('./middleware/requireAuth');
 const bodyPrser = require('body-parser');
 
 const app = express();
 
 app.use(bodyPrser.json());
 app.use(authRoutes);
+app.use(trackRoute);
 
 
 const mongoUrl= 'mongodb+srv://admin:Neo@0554@cluster0-z7frf.mongodb.net/test?retryWrites=true&w=majority';
