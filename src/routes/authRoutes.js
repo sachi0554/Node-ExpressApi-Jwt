@@ -13,7 +13,7 @@ router.post('/signup', async (req, res)=>{
     await user.save();
    res.send({token});
   } catch (err) {
-     return res.status(422).send(err.message);
+     return res.status(422).send(err);
   }
  
 });
